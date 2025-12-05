@@ -69,4 +69,4 @@ export interface Theme {
   transition: string;
 }
 
-export type ThemeMode = 'light' | 'dark';
+export type ThemeMode = 'light' | 'dark' | 'system';

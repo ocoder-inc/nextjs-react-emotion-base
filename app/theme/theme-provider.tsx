@@ -8,6 +8,7 @@ import { lightTheme, darkTheme } from './themes';
 interface ThemeContextType {
   theme: Theme;
   mode: ThemeMode;
+  effectiveMode: 'light' | 'dark';
   toggleTheme: () => void;
   setTheme: (mode: ThemeMode) => void;
 }
@@ -21,20 +22,21 @@ interface ThemeProviderProps {
 
 const STORAGE_KEY = 'theme-mode';
 
-export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultMode = 'system' }: ThemeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(defaultMode);
+  const [systemPreference, setSystemPreference] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
   // Initialize theme from localStorage on client-side
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as ThemeMode;
-    if (stored && (stored === 'light' || stored === 'dark')) {
+    if (stored && (stored === 'light' || stored === 'dark' || stored === 'system')) {
       setMode(stored);
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setMode(prefersDark ? 'dark' : 'light');
     }
+
+    // Check system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setSystemPreference(prefersDark ? 'dark' : 'light');
     setMounted(true);
   }, []);
 
@@ -42,11 +44,7 @@ export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProvider
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => {
-      // Only auto-switch if user hasn't manually set a preference
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (!stored) {
-        setMode(e.matches ? 'dark' : 'light');
-      }
+      setSystemPreference(e.matches ? 'dark' : 'light');
     };
 
     mediaQuery.addEventListener('change', handleChange);
@@ -60,10 +58,19 @@ export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProvider
     }
   }, [mode, mounted]);
 
-  const theme = mode === 'dark' ? darkTheme : lightTheme;
+  // Determine the effective theme (what actually gets applied)
+  const effectiveMode = mode === 'system' ? systemPreference : mode;
+  const theme = effectiveMode === 'dark' ? darkTheme : lightTheme;
 
   const toggleTheme = () => {
-    setMode(prevMode => prevMode === 'light' ? 'dark' : 'light');
+    setMode(prevMode => {
+      switch (prevMode) {
+        case 'light': return 'dark';
+        case 'dark': return 'system';
+        case 'system': return 'light';
+        default: return 'light';
+      }
+    });
   };
 
   const setTheme = (newMode: ThemeMode) => {
@@ -73,6 +80,7 @@ export function ThemeProvider({ children, defaultMode = 'light' }: ThemeProvider
   const value: ThemeContextType = {
     theme,
     mode,
+    effectiveMode,
     toggleTheme,
     setTheme,
   };
