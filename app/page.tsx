@@ -2,11 +2,15 @@
 'use client';
 
 import * as S from './page.styles';
+import { ThemeToggle } from './components/theme-toggle';
 
 export default function Home() {
   return (
     <S.containerStyle>
       <S.mainStyle>
+        <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
+          <ThemeToggle />
+        </div>
         <S.logoStyle
           src="/next.svg"
           alt="Next.js logo"
