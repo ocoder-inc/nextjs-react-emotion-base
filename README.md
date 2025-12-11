@@ -2,18 +2,34 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 Updated to use Emotion css-in-js.
 
-## Getting Started
+## Quick Start for AI Agents
 
-First, run the development server:
+### Option 1: One-command setup (recommended)
+```bash
+./setup-dev.sh
+```
+
+### Option 2: npm script setup
+```bash
+npm run setup-and-dev
+```
+
+### Option 3: Manual setup (if needed)
+```bash
+# Install dependencies and start dev server
+npm install && npm run dev
+```
+
+The development server will start on [http://localhost:8000](http://localhost:8000).
+
+## Getting Started (Traditional)
+
+For manual setup, first install dependencies then run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# or use yarn, pnpm, or bun
 ```
 
 Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
