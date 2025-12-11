@@ -12,16 +12,16 @@
     "@emotion/cache": "^11.14",
     "@emotion/react": "^11.14",
     "@emotion/styled": "^11.14",
-    "next": "16.0.6",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.6",
+    "@types/node": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.0",
     "typescript": "^5"
   }
 }
