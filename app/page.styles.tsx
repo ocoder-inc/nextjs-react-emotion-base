@@ -6,7 +6,7 @@ export const containerStyle = styled.div`
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-image: url('/bg-texture-1.jpg');
+  background-image: url('/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,7 +15,7 @@ export const containerStyle = styled.div`
 
   @media (prefers-color-scheme: dark) {
     /* Keep the background image in dark mode, maybe with a dark overlay */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/bg-texture-1.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/background.jpg');
   }
 `;
 
