@@ -6,11 +6,16 @@ export const containerStyle = styled.div`
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: #fafafa;
+  background-image: url('/bg-texture-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: var(--font-geist-sans), sans-serif;
 
   @media (prefers-color-scheme: dark) {
-    background-color: #000000;
+    /* Keep the background image in dark mode, maybe with a dark overlay */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/bg-texture-1.jpg');
   }
 `;
 
