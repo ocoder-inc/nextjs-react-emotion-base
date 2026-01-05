@@ -59,11 +59,16 @@ export const contentStyle = styled.div`
 `;
 
 export const headingStyle = styled.h1`
-  max-width: 20rem;
   font-size: 136px;
   font-weight: 600;
   line-height: 95.9px;
   letter-spacing: -10.2px;
+  margin: 69px 0px;
+  border: 9px solid #15f505;
+  border-radius: 102px;
+  width: 473px;
+  text-align: right;
+  padding: 10px 157px 10px 101px;
   color: #000000;
 
   @media (prefers-color-scheme: dark) {
