@@ -9,13 +9,13 @@ importers:
   .:
     dependencies:
       '@emotion/cache':
-        specifier: ^11.13.5
+        specifier: ^11.14
         version: 11.14.0
       '@emotion/react':
-        specifier: ^11.13.5
+        specifier: ^11.14
         version: 11.14.0(@types/react@19.2.7)(react@19.2.0)
       '@emotion/styled':
-        specifier: ^11.13.5
+        specifier: ^11.14
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.0))(@types/react@19.2.7)(react@19.2.0)
       next:
         specifier: 16.0.6
