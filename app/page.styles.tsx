@@ -60,10 +60,10 @@ export const contentStyle = styled.div`
 
 export const headingStyle = styled.h1`
   max-width: 20rem;
-  font-size: 1.875rem;
+  font-size: 136px;
   font-weight: 600;
-  line-height: 2.5rem;
-  letter-spacing: -0.025em;
+  line-height: 95.9px;
+  letter-spacing: -10.2px;
   color: #000000;
 
   @media (prefers-color-scheme: dark) {
